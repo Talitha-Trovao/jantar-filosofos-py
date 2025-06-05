@@ -15,8 +15,8 @@ def comer(id):
     time.sleep(0.5) #tempo de comer
 
 def filosofo(id):
-    garfo_esq = id
-    garfo_dir = (id + 1) % n_filo
+    garfo_esq = (id + 1) % n_filo
+    garfo_dir = (id) % n_filo
     while True:
         pensar(id)
         print(f"Filósofo {id} com fome e tentando pegar garfo {garfo_esq} (na esquerda)")
@@ -37,7 +37,7 @@ def filosofo(id):
         garfos[garfo_dir].release()
 
 threads = [] #inicia livre
-for i in range(n_filo):
+for i in range(1, n_filo + 1):
     t = threading.Thread(target=filosofo, args=(i,)) #uma thread para cada filsofo no ciclo
     t.start()
     threads.append(t)

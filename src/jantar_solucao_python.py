@@ -13,11 +13,11 @@ def comer(id):
     time.sleep(0.5) #tempo de comer
 
 def filosofo(id):
-    garfo_esq = id
-    garfo_dir = (id + 1) % n_filo
+    garfo_esq = (id + 1) % n_filo
+    garfo_dir = (id) % n_filo
     while True:
         pensar(id)
-        if id == 0:
+        if id == 1: # a exceção em filosofo 1
             # aqui se introduz a lógica não direcionada, sempre buscando o lado em que está disponivel
             print(f"Filósofo {id} (exceção) tentando pegar garfo {garfo_dir} (direita)")
             garfos[garfo_dir].acquire()
@@ -46,7 +46,7 @@ def filosofo(id):
             garfos[garfo_esq].release()
 
 threads = []
-for i in range(n_filo):
+for i in range(1, n_filo+1):
     t = threading.Thread(target=filosofo, args=(i,)) #uma thread para cada filsofo no ciclo
     t.start()
     threads.append(t)
