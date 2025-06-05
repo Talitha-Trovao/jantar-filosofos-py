@@ -1,4 +1,4 @@
-import threading #habilita multiplos threads para execuçãoparaela no pthon
+import threading #habilita multiplos threads para execuçãoparalela no python
 import time
 
 n_filo = 5 #numero de filososos no teste
